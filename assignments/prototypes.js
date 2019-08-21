@@ -22,8 +22,9 @@ function GameObject(attributes){
 };
 
 GameObject.prototype.destroy = function(){
-  return `${this.name} was removed from the game.`
-}
+  return `${this.name} was removed from the game.`;
+};
+
 /*
   === CharacterStats ===
   * healthPoints
@@ -34,8 +35,8 @@ function CharacterStats(attributes){
   this.healthPoints = attributes.healthPoints,
   GameObject.call(this, attributes)
 };
-CharacterStats.prototype.takeDamage = function(){
-  return `${this.name} took damage.`
+GameObject.prototype.takeDamage = function(){
+  return `${this.name} took damage.`;
 };
 CharacterStats.prototype = Object.create(GameObject.prototype);
 /*
@@ -53,8 +54,8 @@ function Humanoid(attributes){
   this.language = attributes.language,
   CharacterStats.call(this, attributes)
 };
-Humanoid.prototype.greet = function(){
-  return `${this.name} offers a greeting in ${this.language}`
+GameObject.prototype.greet = function(){
+  return `${this.name} offers a greeting in ${this.language}`;
 };
 Humanoid.prototype = Object.create(CharacterStats.prototype);
 /*
@@ -123,7 +124,7 @@ Humanoid.prototype = Object.create(CharacterStats.prototype);
   console.log(swordsman.team); // The Round Table
   console.log(mage.weapons); // Staff of Shamalama
   console.log(archer.language); // Elvish
-  // console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+  console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 
